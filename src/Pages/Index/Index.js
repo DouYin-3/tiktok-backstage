@@ -8,6 +8,8 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import { Route } from 'react-router-dom';
+import LiveManage from '../LiveManage/Index'
 import './Index.css'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -18,9 +20,6 @@ class SiderDemo extends React.Component {
     collapsed: false,
   };
 
-  componentDidMount(){
-    // this.props.history.push('/Login')
-  }
 
   onCollapse = collapsed => {
     console.log(collapsed);
@@ -37,7 +36,7 @@ class SiderDemo extends React.Component {
             <Menu.Item key="1" icon={<PieChartOutlined />}>
               视频
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <Menu.Item key="2" icon={<DesktopOutlined />} onClick={()=>{this.props.history.push('/index/LiveManage')}}>
               直播
             </Menu.Item>
           </Menu>
@@ -46,7 +45,7 @@ class SiderDemo extends React.Component {
           <Header className="site-layout-background content-header" style={{ padding: 0 }} >title</Header>
           <Content style={{ margin: '0 16px' }}>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              测试内容
+              <Route path="/Index/LiveManage" component={LiveManage}></Route>
             </div>
           </Content>
         </Layout>
