@@ -7,8 +7,9 @@ function Index() {
     const [liveList, setLiveList] = useState([])
     useEffect(()=>{getLiveList()},[])
     const getLiveList = ()=>{
-        axios.get("http://rap2api.taobao.org/app/mock/260656/tiktok/userList").then(res=>{
+        axios.get("http://localhost:7001/api/lives").then(res=>{
             setLiveList(res.data.list)
+            // console.log(res.data.list)
         })
     }
     let delLiving = (i)=>{
@@ -23,8 +24,8 @@ function Index() {
                     liveList.map((item,index)=>{
                         return(
                             <Col key={index} span={8}>
-                                <Card title={item.name} >
-                                    <LiveCard userName={item.userName} viewer={item.viewer} uid={item.uid} delLiving={delLiving} i={index} />
+                                <Card title={item.description} >
+                                    <LiveCard userName={item.author} viewer={item.likes} uid={item.id} delLiving={delLiving} i={index} />
                                 </Card>
                             </Col>
                         )

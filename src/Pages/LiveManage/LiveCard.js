@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Statistic, Row, Col, Button, Popconfirm,message } from 'antd';
 
 function LiveCard(props) {
     const {userName, viewer, uid, i, delLiving} = props
     let handleClose = (e)=>{
-        message.success(`you closed the living of ${userName}`);
-        delLiving(i)
+        axios.get("http://localhost:7001/api/v2/lives/close").then(()=>{
+            message.success(`you closed the living of ${userName}`);
+            delLiving(i)
+        })
     }
     
     return (
